@@ -1,5 +1,6 @@
 const cells = document.getElementsByClassName('cell');
 
+let gameStart = 'X';
 let turn = 'X';
 setTurn();
 
@@ -23,10 +24,11 @@ function selectCell(rowNo, colNo) {
         setCellValue(rowNo, colNo, turn);
         const winner = checkWin();
         if (winner != '') {
-            displayMsg(`${winner} won! Game ends!`)
+            displayMsg(winner === 'D' ? `Game draw!` : `${winner} won! Game ends!`)
             endGame();
+        } else {
+            toggleTurn();
         }
-        toggleTurn();
     } else {
         displayMsg('Already selected. Select another!');
     }
@@ -47,11 +49,24 @@ function toggleTurn() {
 }
 
 function checkWin() {
+    if (allFilled())
+        return 'D';
     if (checkForValue('X'))
         return 'X';
     if (checkForValue('O'))
         return 'O';
     return '';
+}
+
+function allFilled() {
+    for(let i=0; i<3; i++) {
+        for(let j=0; j<3; j++) {
+            if (board[i][j] === '') {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 function checkForValue(value) {
@@ -121,6 +136,9 @@ function endGame() {
             setCellValue(i+1, j+1, '');
         }
     }
+    gameStart = gameStart === 'X' ? 'O' : 'X';
+    turn = gameStart;
+    setTurn();
 }
 
 function displayMsg(msg) {
