@@ -1,4 +1,6 @@
 .board {
+    z-index:1;
+    position: absolute;
     width: 600px;
     height: 600px;
     margin: 0 auto;
@@ -26,4 +28,28 @@
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+.message-container {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: orange;
+    color: #fff;
+    border: 6px solid #2c3e50;
+    border-radius: 10px;
+    z-index: 300;
+    opacity: 0.5;
+    display: none;
+}
+
+.message {
+    font-weight: bold;
+    font-size:50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
