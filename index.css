@@ -1,4 +1,4 @@
-.row {
+.board {
     width: 600px;
     height: 600px;
     margin: 0 auto;
@@ -10,7 +10,7 @@
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
-.rowcol {
+.cell {
     border: 6px solid #2c3e50;
     border-radius: 2px;
     font-family: Helvetica;
@@ -19,4 +19,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.turn-details {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
